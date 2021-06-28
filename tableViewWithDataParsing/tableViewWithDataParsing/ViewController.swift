@@ -73,5 +73,14 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource{
         return UISwipeActionsConfiguration(actions: [editAction])
     }
     
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0 //cell initial
+        
+        let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
+        cell.layer.transform = transform
+        UIView.animate(withDuration: 1.0) {
+            cell.alpha = 1.0
+            
+            cell.layer.transform = CATransform3DIdentity
+        }
 }
